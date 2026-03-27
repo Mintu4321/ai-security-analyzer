@@ -25,14 +25,14 @@ runs:
       shell: bash
 
     - name: Run Analyzer
-      run: python analyzer.py
+      run: python ${{ github.action_path }}/analyzer.py
       shell: bash
       env:
         GOOGLE_API_KEY: ${{ inputs.google_api_key }}
         REPORT_PATH: ${{ inputs.report_path }}
 
     - name: Comment PR
-      run: python comment_pr.py
+      run: python ${{ github.action_path }}/comment_pr.py
       shell: bash
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
