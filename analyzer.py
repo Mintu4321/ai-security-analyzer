@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-REPORT_FILE = os.getenv("REPORT_PATH", "trivy-report.json")
-
+workspace = os.getenv("GITHUB_WORKSPACE", os.getcwd())
+REPORT_FILE = os.getenv("REPORT_PATH", os.path.join(workspace, "trivy-report.json"))
 
 def parse_trivy_report(file_path):
     with open(file_path, "r") as f:
